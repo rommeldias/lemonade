@@ -1,0 +1,40 @@
+// Place your settings in this file to overwrite the default settings
+{
+    //"editor.renderWhitespace": "all",
+    "editor.selectionClipboard": true,
+    "editor.detectIndentation": false,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.insertSpaces": true,
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "files.exclude": {
+        "**/._*": true,
+        "**/*.pyc": true
+    },
+    // Controls the rendering size of tabs in characters. Accepted values: "auto", 2, 4, 6, etc. If set to "auto", the value will be guessed when a file is opened.
+    "editor.tabSize": 4,
+    // Controls if the editor will insert spaces for tabs. Accepted values:  "auto", true, false. If set to "auto", the value will be guessed when a file is opened.
+    "files.associations": {
+        "*.vue": "html"
+    },
+    "importCost.javascriptExtensions": [
+        "\\.jsx?$",
+        "\\.vue$"
+    ],
+    "importCost.typescriptExtensions": [
+        "\\.tsx?$",
+        "\\.vue$"
+    ],
+    "window.zoomLevel": 0,
+    "files.autoSave": "off",
+    "vetur.format.defaultFormatter.html": "prettyhtml",
+    "vetur.format.defaultFormatter.js": "prettier",
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+}
