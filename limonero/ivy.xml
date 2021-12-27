@@ -1,0 +1,26 @@
+<ivy-module version="2.0">
+    <info organisation="br.ufmg.dcc.speed" module="lemonade-limonero"/>
+    <dependencies>
+        <dependency org="org.apache.hadoop" name="hadoop-client" rev="2.9.1">
+            <exclude org="*" ext="*" type="source"/>
+            <exclude org="*" ext="*" type="javadoc"/>
+        </dependency>
+
+        <dependency org="org.apache.parquet" name="parquet-tools" rev="1.10.0">
+            <exclude org="*" ext="*" type="source"/>
+            <exclude org="*" ext="*" type="javadoc"/>
+        </dependency>
+        <!--
+        <dependency org="org.apache.hadoop" name="hadoop-hdfs" rev="2.9.1">
+            <artifact name="hadoop-hdfs" type="tests" ext="jar" m:classifier="tests"/>
+            <exclude org="*" ext="*" type="source"/>
+            <exclude org="*" ext="*" type="javadoc"/>
+        </dependency>
+        <dependency org="org.apache.hadoop" name="hadoop-common" rev="2.9.1">
+            <artifact name="hadoop-common" type="tests" ext="jar" m:classifier="tests"/>
+            <exclude org="*" ext="*" type="source"/>
+            <exclude org="*" ext="*" type="javadoc"/>
+        </dependency>
+        -->
+    </dependencies>
+</ivy-module>
