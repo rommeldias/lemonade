@@ -444,6 +444,8 @@ class ExecutePythonOperation(Operation):
                 'from RestrictedPython import compile_restricted')
             self.transpiler_utils.add_import(
                 'from RestrictedPython.PrintCollector import PrintCollector')
+            self.transpiler_utils.add_import(
+                'from RestrictedPython.Guards import guarded_iter_unpack_sequence')
 
     def get_output_names(self, sep=", "):
         return sep.join([self.out1, self.out2])
@@ -453,21 +455,7 @@ class ExecutePythonOperation(Operation):
         in2 = self.named_inputs.get('input data 2', 'None')
 
         if self.plain:
-            if self.parameters.get('export_notebook'):
-                code = dedent("""
-                    # Input data
-                    in1 = {in1}
-                    in2 = {in2}
-                    # Output data, initialized as None
-                    out1 = None
-                    out2 = None
-                    DataFrame = pd.DataFrame
-                    createDataFrame = pd.DataFrame
-                    """.format(in1=in1, in2=in2)) 
-                code = code + '\n' + self.code
-                return code
-            else:
-                return dedent(self.code)
+            return dedent(self.code)
 
         code = dedent("""
 
@@ -488,13 +476,16 @@ class ExecutePythonOperation(Operation):
             'out2': out2,
             'DataFrame': pd.DataFrame,
             'createDataFrame': pd.DataFrame,
-            
+            'np': np,
+            'concat': pd.concat,
+            'pd': pd,
             # Restrictions in Python language
             '_write_': lambda v: v,
             # '_getattr_': getattr,
             '_getitem_': lambda ob, index: ob[index],
             '_getiter_': lambda it: it,
             '_print_': PrintCollector,
+            '_iter_unpack_sequence_':guarded_iter_unpack_sequence,
             'json': json,
         }}
         user_code = {code}.decode('unicode_escape')
